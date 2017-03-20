@@ -43,13 +43,13 @@ class RoomMap{
             e.printStackTrace();
         }
     }
-    public void printRoomTrace(ArrayList<ArrayList<Cell>> theTrace){
+    void printRoomTrace(ArrayList<ArrayList<Cell>> theTrace){
         if(theTrace==null){
             return;
         }
-        for(int i=0;i<theTrace.size();i++){
-            for(int j=0;j<theTrace.get(i).size();j++){
-                System.out.print(theTrace.get(i).get(j).type);
+        for (ArrayList<Cell> aTheTrace : theTrace) {
+            for (Cell anATheTrace : aTheTrace) {
+                System.out.print(anATheTrace.type);
             }
             System.out.println();
         }
@@ -62,9 +62,6 @@ class RoomMap{
 //        int x=rand.nextInt(5)+10;
 //        LandScape=new ArrayList<>(3);
 //    }
-
-
-
 
 
 //
