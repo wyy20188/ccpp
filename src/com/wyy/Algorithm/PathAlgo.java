@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by wyy on 2017/3/20.
  */
 public interface PathAlgo {
-     void setMap();
+     boolean setMap();
      Direction getNextDirection();
      ArrayList<Direction> getDirections();
 }
