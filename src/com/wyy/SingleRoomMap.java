@@ -11,10 +11,10 @@ class SingleRoomMap extends RoomMap{
         super(1, length, width);
     }
     ArrayList<ArrayList<Cell>> maze;
-    @Override
-    public ArrayList<ArrayList<Cell>> getRoadMap() {
-        // fixed map for temporary
-        maze=new ArrayList<ArrayList<Cell>>();
 
-    }
+//    public ArrayList<ArrayList<Cell>> getRoadMap() {
+//        // fixed map for temporary
+//        maze=new ArrayList<ArrayList<Cell>>();
+//
+//    }
 }

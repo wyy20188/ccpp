@@ -7,5 +7,6 @@ import java.util.ArrayList;
  * To regulate the formation of Map
  */
 interface IMap {
-     ArrayList<ArrayList<Cell>> getRoadMap();
+    ArrayList<ArrayList<Cell>> getRoadMap();
+
 }
