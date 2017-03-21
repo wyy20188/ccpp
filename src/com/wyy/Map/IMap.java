@@ -1,4 +1,6 @@
-package com.wyy;
+package com.wyy.Map;
+
+import com.wyy.Element.Cell;
 
 import java.util.ArrayList;
 

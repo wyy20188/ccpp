@@ -1,15 +1,16 @@
 package com.wyy.Algorithm;
 
+import com.wyy.Element.Detector;
 import com.wyy.Element.Direction;
-import javafx.scene.control.Cell;
 
 import java.util.ArrayList;
 
 /**
- * Created by wyy on 2017/3/20.
- * new algorithm created by myself
+ * Created by wyy on 2017/3/21.
+ * this class implements a basic algorithm spanning inner algorithm
  */
-public class MyAlg implements IAlg{
+public class SpinAlg implements IAlg {
+    Detector detector=new Detector();
     @Override
     public boolean setMap() {
         return false;
@@ -24,11 +25,4 @@ public class MyAlg implements IAlg{
     public ArrayList<Direction> getDirections() {
         return null;
     }
-
-
-    //step1 select and go to one direction
-
-    //step2 judge with old samples
-
-    //step3 create new pattern (or use old one)
 }
