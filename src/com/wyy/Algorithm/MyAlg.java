@@ -1,7 +1,8 @@
 package com.wyy.Algorithm;
 
+import com.wyy.Element.Action;
+import com.wyy.Element.Detector;
 import com.wyy.Element.Direction;
-import javafx.scene.control.Cell;
 
 import java.util.ArrayList;
 
@@ -9,20 +10,20 @@ import java.util.ArrayList;
  * Created by wyy on 2017/3/20.
  * new algorithm created by myself
  */
-public class MyAlg implements IAlg{
-    @Override
-    public boolean setMap() {
-        return false;
+public class MyAlg extends IAlg{
+    public MyAlg(Detector myDet) {
+        super(myDet);
     }
 
     @Override
-    public Direction getNextDirection() {
+    public Action getNextAction() {
         return null;
     }
 
     @Override
-    public ArrayList<Direction> getDirections() {
-        return null;
+    public Action getNextAction(Detector det) {
+        this.myDet=det;
+        return getNextAction();
     }
 
 
