@@ -48,18 +48,7 @@ public class RoomMap{
     public Vector< Vector<Cell> > getTheMap(){
         return theMap;
     }
-    // this method is used to monitor the status of the maze
-    public void printRoomTrace(Vector<Vector<Cell>> theTrace){
-        if(theTrace==null){
-            return;
-        }
-        for (Vector<Cell> aTheTrace : theTrace) {
-            for (Cell anATheTrace : aTheTrace) {
-                System.out.print(anATheTrace.getType());
-            }
-            System.out.println();
-        }
-    }
+
 
 //    // initial() method will build the wall, the obstacle and other room space
 //    private void Initial() {

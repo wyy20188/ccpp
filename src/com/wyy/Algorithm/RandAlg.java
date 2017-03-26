@@ -2,6 +2,7 @@ package com.wyy.Algorithm;
 
 import com.wyy.Element.Action;
 import com.wyy.Element.Detector;
+import com.wyy.Element.Direction;
 
 /**
  * Created by wyy on 2017/3/21.
@@ -17,6 +18,11 @@ public class RandAlg extends IAlg {
 
     @Override
     public Action getNextAction() {
+        if (myDet.space.get(Direction.RIGHT)>0){
+            action.direction=Direction.RIGHT;
+            action.steps=1;
+            return action;
+        }
         return null;
     }
 
