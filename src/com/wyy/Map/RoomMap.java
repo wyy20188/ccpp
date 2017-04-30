@@ -50,20 +50,6 @@ public class RoomMap{
     }
 
 
-//    // initial() method will build the wall, the obstacle and other room space
-//    private void Initial() {
-//        // 1.
-//        Random rand=new Random(System.currentTimeMillis());
-//        int x=rand.nextInt(5)+10;
-//        LandScape=new ArrayList<>(3);
-//    }
-
-
-//
-//    public ArrayList<ArrayList<Cell>> getRoadMap(BufferedReader br) {
-//        theMap=new ArrayList<ArrayList<Cell>>();
-//
-//    }
 }
 
 

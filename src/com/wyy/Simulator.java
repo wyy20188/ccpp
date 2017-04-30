@@ -4,7 +4,6 @@ import com.wyy.Algorithm.IAlg;
 import com.wyy.Element.Action;
 import com.wyy.Element.Cell;
 import com.wyy.Element.Detector;
-import com.wyy.Element.Direction;
 import com.wyy.Map.RoomMap;
 import com.wyy.Tools.DebugTools;
 import com.wyy.Tools.MoveTools;
@@ -31,8 +30,9 @@ public class Simulator {
      * two params define the initial cell
      * @param posX x coordinator
      * @param posY y coordinator
+     * @param times the rounds the simulator can run, 0 means infinite
      */
-    public void runSim(int posX, int posY){
+    public void runSim(int posX, int posY,int times){
         //1. initial and judge if the point and operation is rational
         Cell curCell = usedMap.get(posY).get(posX);
         Detector dec = new Detector(usedMap, curCell);
@@ -40,7 +40,10 @@ public class Simulator {
         curCell.setHasBeenCleaned(true);
         curCell.setPassedTimes(curCell.getPassedTimes()+1);
         Action nextAction;
-        while ((nextAction=usedAlg.getNextAction())!=null){//null means alg is to end
+        if(times<=0){
+            times=Integer.MAX_VALUE;
+        }
+        while ((nextAction=usedAlg.getNextAction())!=null && (times-->0)){//null means alg is to end
             //test if the action is unreasonable first
             boolean flag=false;// true means collapse happened
             int steps=nextAction.steps;
@@ -57,13 +60,15 @@ public class Simulator {
                 System.out.println("wrong");
             }
             //2. update the status of the robot and its detector
-            dec.updatePos(curCell);
+            assert curCell != null;
+            dec.updatePos(curCell,curCell.getAttr());
             usedAlg.updateDetector(dec);
 
+            System.out.println(nextAction.direction+":"+nextAction.steps);
             DebugTools.printRoomTrace(usedMap,1);
             System.out.println("-----------------------");
         }
-
+        System.out.println("Simulation ends");
     }
     //a random point // STOPSHIP: 2017/3/21
     public void runSim(){

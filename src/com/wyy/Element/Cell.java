@@ -8,7 +8,7 @@ public class Cell {
     private int passedTimes;
     private boolean hasBeenCleaned;
     private int height;// optional
-    private int attr;// optional
+    private int attr=0;// used to represent the current direction temporarily
 
     public char getType() {
         return type;

@@ -2,6 +2,7 @@ package com.wyy.Tools;
 
 import com.wyy.Element.Cell;
 import com.wyy.Element.Direction;
+import com.wyy.Element.Global;
 
 import java.util.Vector;
 
@@ -22,7 +23,7 @@ public final class MoveTools {
         int posX,posY;
         char type;
         switch (dir){
-            case DOWN:
+            case BACK:
                 posY=cell.getPosY()+1;
                 type=map.get(posY).get(cell.getPosX()).getType();
                 while (posY<map.size()&&(type!='w'&&type!='o')){
@@ -31,7 +32,7 @@ public final class MoveTools {
                     type=map.get(posY).get(cell.getPosX()).getType();
                 }
                 break;
-            case UP:
+            case FRONT:
                 posY=cell.getPosY()-1;
                 type=map.get(posY).get(cell.getPosX()).getType();
                 while (posY>-1&&(type!='w'&&type!='o')){
@@ -58,6 +59,21 @@ public final class MoveTools {
                     type=map.get(cell.getPosY()).get(posX).getType();
                 }
                 break;
+            //// STOPSHIP: 2017/4/11
+            case FL:
+//                posX=cell.getPosX()-1;
+//                posY=cell.getPosY()-1;
+                System.out.println("wait for next version");
+                break;
+            case FR:
+                System.out.println("wait for next version");
+                break;
+            case BL:
+                System.out.println("wait for next version");
+                break;
+            case BR:
+                System.out.println("wait for next version");
+                break;
         }
         return dist;
     }
@@ -79,20 +95,22 @@ public final class MoveTools {
         Cell result=null;
         int x=cell.getPosX();
         int y=cell.getPosY();
-        if(dir==Direction.UP){
+        if(dir==Direction.FRONT){
             if(sweep)
                 for(int i=1;i<num+1;i++){
                     map.get(y-i).get(x).setHasBeenCleaned(true);
                     map.get(y-i).get(x).setPassedTimes(map.get(y-i).get(x).getPassedTimes()+1);
                 }
             result=map.get(y-num).get(x);
-        }else if(dir==Direction.DOWN){
+            result.setAttr(Global.BACK);
+        }else if(dir==Direction.BACK){
             if(sweep)
                 for(int i=1;i<num+1;i++){
                     map.get(y+i).get(x).setHasBeenCleaned(true);
                     map.get(y+i).get(x).setPassedTimes(map.get(y+i).get(x).getPassedTimes()+1);
                 }
             result=map.get(y+num).get(x);
+            result.setAttr(Global.FRONT);
         }else if(dir==Direction.LEFT){
             if(sweep)
                 for(int i=1;i<num+1;i++){
@@ -100,6 +118,7 @@ public final class MoveTools {
                     map.get(y).get(x-i).setPassedTimes(map.get(y).get(x-i).getPassedTimes()+1);
                 }
             result=map.get(y).get(x-num);
+            result.setAttr(Global.RIGHT);
         }else if(dir==Direction.RIGHT){
             if(sweep)
                 for(int i=1;i<num+1;i++){
@@ -107,6 +126,7 @@ public final class MoveTools {
                     map.get(y).get(x+i).setPassedTimes(map.get(y).get(x+i).getPassedTimes()+1);
                 }
             result=map.get(y).get(x+num);
+            result.setAttr(Global.LEFT);
         }
         return result;
     }

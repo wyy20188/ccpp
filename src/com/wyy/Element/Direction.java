@@ -6,7 +6,16 @@ package com.wyy.Element;
  */
 public enum Direction {
     LEFT,
-    UP,
+    FL, // FRONT+LEFT
+    FRONT,
+    FR, // FRONT+RIGHT
     RIGHT,
-    DOWN
+    BR,  // BACK+RIGHT
+    BACK,
+    BL; // BACK+LEFT
+
+    public Direction offSet(int num){
+        return values()[(ordinal() + num)%values().length];
+    }
 }
+
