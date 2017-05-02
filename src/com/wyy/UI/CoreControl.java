@@ -1,16 +1,5 @@
 package com.wyy.UI;//package com.wyy.UI;
-//
-//import javax.swing.*;
-//
-///**
-// * Created by wyy on 2017/4/30.
-// */
-//public class Board extends JPanel{
-//    private void newDisplay(){
-//
-//    }
-//}
-//
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
