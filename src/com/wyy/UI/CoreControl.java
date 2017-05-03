@@ -1,4 +1,4 @@
-package com.wyy.UI;//package com.wyy.UI;
+package com.wyy.UI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -17,6 +17,27 @@ public class CoreControl {
 
         private List<Point> fillCells;
 
+        private int sleepTime=300;
+        private int cellSize=15;
+        private int widthNum=40;
+        private int heightNum=50;
+
+        public int getGridWidth() {
+            return widthNum;
+        }
+
+        public void setGridWidth(int gridWidth) {
+            this.widthNum = gridWidth;
+        }
+
+        public int getGridHeight() {
+            return heightNum;
+        }
+
+        public void setGridHeight(int gridHeight) {
+            this.heightNum = gridHeight;
+        }
+
         public Grid() {
             fillCells = new ArrayList<>(25);
         }
@@ -25,28 +46,27 @@ public class CoreControl {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             for (Point fillCell : fillCells) {
-                int cellX = 10 + (fillCell.x * 10);
-                int cellY = 10 + (fillCell.y * 10);
+                int cellX = cellSize + (fillCell.x * cellSize);
+                int cellY = cellSize + (fillCell.y * cellSize);
                 g.setColor(Color.RED);
-                g.fillRect(cellX, cellY, 10, 10);
+                g.fillRect(cellX, cellY, cellSize, cellSize);
             }
             g.setColor(Color.BLACK);
-            g.drawRect(10, 10, 800, 500);
+            g.drawRect(cellSize, cellSize, widthNum*cellSize, heightNum*cellSize);
 
-            for (int i = 10; i <= 800; i += 10) {
-                g.drawLine(i, 10, i, 510);
+            for (int i = cellSize; i <= widthNum*cellSize; i += cellSize) {
+                g.drawLine(i, cellSize, i, heightNum*cellSize+cellSize);
             }
 
-            for (int i = 10; i <= 500; i += 10) {
-                g.drawLine(10, i, 810, i);
+            for (int i = cellSize; i <= heightNum*cellSize; i += cellSize) {
+                g.drawLine(cellSize, i, widthNum*cellSize+cellSize, i);
             }
         }
 
         public void fillCell(int x, int y) {
             fillCells.add(new Point(x, y));
-            System.out.println("point"+x+","+y);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -67,21 +87,16 @@ public class CoreControl {
 
                 Grid grid = new Grid();
                 JFrame window = new JFrame();
-                window.setSize(840, 560);
+                window.setSize(grid.widthNum*grid.cellSize+40, grid.heightNum*grid.cellSize+60);
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 window.add(grid);
                 window.setVisible(true);
-                System.out.println("has set grid");
                 grid.fillCell(0, 0);
                 grid.fillCell(79, 0);
                 grid.fillCell(0, 49);
                 grid.fillCell(79, 49);
                 grid.fillCell(39, 24);
-                grid.fillCell(39, 40);
-                System.out.println("has fill cell");
             }
         });
     }
-
-
 }
