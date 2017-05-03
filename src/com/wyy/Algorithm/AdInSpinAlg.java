@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by wyy on 2017/3/20.
  * new algorithm created by myself
  */
-public class MyAlg extends IAlg{
-    public MyAlg(Detector myDet) {
+public class AdInSpinAlg extends IAlg{
+    public AdInSpinAlg(Detector myDet) {
         super(myDet);
     }
 
